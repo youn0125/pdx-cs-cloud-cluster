@@ -27,7 +27,8 @@ with open("freeway_detectors.csv", "r", encoding='UTF-8') as csvfile:
 finalList = list()
 
 # group by detectorid
-# same detectorid tuples can be combined into one tuple
+# same detectorid's loopdata will be  divided into two
+# b/c of the size limit of document(16mb)
 grouped = df.groupby('detectorid')
 for key, value in grouped:
     dictionary_f = dict()
@@ -54,7 +55,6 @@ for key, value in grouped:
 
     # list of data
     dictList = list()
-    data_cnt = 0
     for i in j.index:
         anotherDict = dict()
         if math.isnan(float(j.at[i, 'speed'])) == False and int(j.at[i, 'speed']) != 0:
@@ -66,7 +66,6 @@ for key, value in grouped:
             anotherDict['dqflags'] = j.at[i, 'dqflags']
 
             dictList.append(anotherDict)
-            data_cnt += 1
 
             if anotherDict['speed'] < 5:
                 dictionary_f['numlowspeed'] += 1
@@ -75,16 +74,12 @@ for key, value in grouped:
                 dictionary_f['numhighspeed'] += 1
                 dictionary_s['numhighspeed'] += 1
 
-    if data_cnt != 0:
+    if len(dictList) != 0:
         length = len(dictList)
         middle_index = length // 2
-        first_half = dictList[:middle_index]
-
-        second_half = dictList[middle_index:]
-
-        dictionary_f['data'] = first_half
+        dictionary_f['data'] = dictList[:middle_index]
         finalList.append(dictionary_f)
-        dictionary_s['data'] = second_half
+        dictionary_s['data'] = dictList[middle_index:]
         finalList.append(dictionary_s)
 
 file_cnt = 0
