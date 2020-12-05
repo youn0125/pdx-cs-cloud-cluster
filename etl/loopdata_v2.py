@@ -14,7 +14,7 @@ with open("freeway_detectors.csv", "r", encoding='UTF-8') as csvfile:
 # final list of loopdata
 loopdata = list()
 
-with open("freeway_loopdata.csv", "r", encoding='UTF-8' ) as csvfile:
+with open("freeway_loopdata.csv", "r", encoding='UTF-8') as csvfile:
     reader = DictReader(csvfile)
     loopdata = list(reader)
 

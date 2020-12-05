@@ -7,11 +7,11 @@ detectors = list()
 stations = dict()
 highways = dict()
 
-with open("freeway_detectors.csv", "r", encoding='UTF-8' ) as csvfile:
+with open("freeway_detectors.csv", "r", encoding='UTF-8') as csvfile:
     reader = DictReader(csvfile)
     detectors = list(reader)
 
-with open("freeway_stations.csv", "r", encoding='UTF-8' ) as csvfile:
+with open("freeway_stations.csv", "r", encoding='UTF-8') as csvfile:
     reader = DictReader(csvfile)
     s_list = list(reader)
     # Make dictionary of dictionary: stations[s_id][key] = value
@@ -27,7 +27,7 @@ with open("freeway_stations.csv", "r", encoding='UTF-8' ) as csvfile:
 
 
 
-with open("highways.csv", "r", encoding='UTF-8' ) as csvfile:
+with open("highways.csv", "r", encoding='UTF-8') as csvfile:
     reader = DictReader(csvfile)
     h_list = list(reader)
     # Make dictionary of dictionary: highways[h_id][key] = value
