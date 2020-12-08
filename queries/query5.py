@@ -61,7 +61,3 @@ routes.append(end_doc["locationtext"])
 # Display
 for route in routes:
     print(route)
-
-
-
-

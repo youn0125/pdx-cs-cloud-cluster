@@ -24,6 +24,26 @@ routes = list()
 
 
 # use $options:'i' to make the query case-insensitive
-query = db.Loopdata.aggregate([{"$match": {"$and": [{"starttime" : {"$regex": "2011-09-15.*"}},{"locationtext" : "Foster NB"}]}},{"$group": {"_id": 0,"Total volume:": {"$sum": {"$toInt": "$volume"}}}}])
-
+query = db.Loopdata.aggregate(
+  [
+    {
+      "$match": {
+        "$and": [
+          {"starttime" : {"$regex": "2011-09-15.*"}
+          },
+          {"locationtext" : "Foster NB"
+          }
+        ]
+      }
+    },
+    {
+      "$group": {
+        "_id": 0,
+        "Total volume:": {
+          "$sum": "$volume"
+        }
+      }
+    }
+  ]
+)
 print(list(query))

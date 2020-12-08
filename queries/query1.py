@@ -23,7 +23,7 @@ end_re = re.compile(end, re.IGNORECASE)
 routes = list()
 
 # use $options:'i' to make the query case-insensitive
-cursor = db.Loopdata.aggregate([{"$match": {"$or": [{"speed": {"$lt": "5"}}, {"speed": {"$gt": "80"}}]}},{"$count": "Number of speeds < 5 mph and > 80 mph: "}])
+cursor = db.Loopdata.aggregate([{"$match": {"$or": [{"speed": {"$lt": 5}}, {"speed": {"$gt": 80}}]}},{"$count": "Number of speeds < 5 mph and > 80 mph: "}])
 
 for item in cursor:
     print (item)
