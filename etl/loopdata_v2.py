@@ -24,20 +24,16 @@ for l in loopdata:
     # remove the row having speed value with '' or 0
     if l["speed"] != '' and l['speed'] != '0':
         l["schema"] = "1.0"
+        l["speed"] = int(l["speed"])
+        l["volume"] = int(l["volume"])
+        l["occupancy"] = int(l["occupancy"])
+        l["status"] = int(l["status"])
+        l["dqflags"] = int(l["dqflags"])
         # Add locationtext data to each loopdata
         if detectors[l['detectorid']]:
             l["locationtext"] = detectors[l["detectorid"]]
+        l["detectorid"] = int(l["detectorid"])
         m_loopdata.append(l)
 
-length = len(m_loopdata)
-f_index = 0
-interval = length // 3
-remainder = length - interval*3
-# divide the loopdata into three and write three json files
-for i in range(4):
-    with open("loopdata_" + str(i) + ".json", 'w') as f:
-        if i == 3:
-            dump(m_loopdata[f_index:f_index + remainder], f)
-        else:
-            dump(m_loopdata[f_index:f_index + interval], f)
-            f_index = f_index + interval
+with open("loopdata.json", 'w') as f:
+    dump(m_loopdata, f)
