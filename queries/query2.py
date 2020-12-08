@@ -11,19 +11,6 @@ MONGO_DB = os.getenv("MONGO_DB")
 cluster = MongoClient(MONGO_HOST, 27017)
 db = cluster[MONGO_DB]
 
-# Get collection for query
-col_detectors = db["Detectors"]
-
-start = "johnson cr"
-end = "Powell"
-direction = "NB"
-start_re = re.compile(start, re.IGNORECASE)
-end_re = re.compile(end, re.IGNORECASE)
-
-routes = list()
-
-
-# use $options:'i' to make the query case-insensitive
 query = db.Loopdata.aggregate(
   [
     {
