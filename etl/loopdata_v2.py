@@ -32,6 +32,7 @@ for l in loopdata:
         # Add locationtext data to each loopdata
         if detectors[l['detectorid']]:
             l["locationtext"] = detectors[l["detectorid"]]
+        l["detectorid"] = int(l["detectorid"])
         m_loopdata.append(l)
 
 with open("loopdata.json", 'w') as f:
