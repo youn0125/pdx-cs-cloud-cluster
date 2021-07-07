@@ -1,6 +1,6 @@
 # Cloud Cluster Project
 
-<h3><b>Overall Project Goal</b></h3>
+<h3>Overall Project Goal</h3>
 
 The project has several goals.
 
