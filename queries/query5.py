@@ -15,7 +15,7 @@ db = cluster[MONGO_DB]
 col_detectors = db["Detectors"]
 
 start = "johnson cr"
-end = "Powell"
+end = "Columbia"
 direction = "NB"
 start_re = re.compile(start, re.IGNORECASE)
 end_re = re.compile(end, re.IGNORECASE)
